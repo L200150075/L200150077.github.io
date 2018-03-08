@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<body>
+<h1>Rumah Lala</h1>
+<div id="map" style="width:100%;height:700px;"></div>
+
+<script>
+function myMap() {
+  var myCenter = new google.maps.LatLng(-7.5387722,110.7141293);
+  var mapCanvas = document.getElementById("map");
+  var mapOptions = {center: myCenter, zoom: 16};
+  var map = new google.maps.Map(mapCanvas, mapOptions);
+  var marker = new google.maps.Marker({position:myCenter});
+  marker.setMap(map);
+}
+</script>
+
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDUKnCui1WNXWJTT_QDcmhs31x3v-IeV3w&callback=myMap"></script>  
+
+</body>
+</html>
