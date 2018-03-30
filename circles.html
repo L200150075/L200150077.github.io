@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta name="viewport" content="initial-scale=1.0, user-scalable=no">
+    <meta charset="utf-8">
+    <title>Circles</title>
+    <style>
+      /* Always set the map height explicitly to define the size of the div
+       * element that contains the map. */
+      #map {
+        height: 100%;
+      }
+      /* Optional: Makes the sample page fill the window. */
+      html, body {
+        height: 100%;
+        margin: 0;
+        padding: 0;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>10 Besar Kecamatan di Kab. Wonogiri</h1>
+    <div id="map"></div>
+    <script>
+      var citymap = {
+        ngadirojo: {
+          center: {lat: -7.7917171, lng: 110.8500257},
+          population: 310390
+        },
+        selogiri: {
+          center: {lat: -7.9600081, lng: 110.873251},
+          population: 247830
+        },
+        eromoko: {
+          center: {lat: -7.8475135, lng: 111.0941101},
+          population: 221010
+        },
+        tirtomoyo: {
+          center: {lat: -7.8347036, lng: 111.2298927},
+          population: 219690
+        },
+       girimarto: {
+          center: {lat: -8.0785461, lng: 110.7438599},
+          population: 212580
+        },
+       slogohimo: {
+          center: {lat: -7.9630542, lng: 110.7574429},
+          population: 180070
+        },
+       jatisrono: {
+          center: {lat: -7.8611342, lng: 110.9869534},
+          population: 182310
+        },
+       sidoharjo: {
+          center: {lat:-7.8981712, lng: 110.78992},
+          population: 165670
+        },
+       giriwoyo: {
+          center: {lat: -7.8347578, lng: 110.934373},
+          population: 151800 
+        },
+        purwantoro: {
+          center: {lat: -7.810779, lng: 111.0534145},
+          population: 148900
+        }
+      };
+
+      function initMap() {
+        // Create the map.
+        var map = new google.maps.Map(document.getElementById('map'), {
+          zoom: 11,
+          center: {lat: -7.7917171, lng: 110.8500257},
+          mapTypeId: 'terrain'
+        });
+
+        // Construct the circle for each value in citymap.
+        // Note: We scale the area of the circle based on the population.
+        for (var city in citymap) {
+          // Add the circle for this city to the map.
+          var cityCircle = new google.maps.Circle({
+            strokeColor: '#33691E',
+            strokeOpacity: 0.5,
+            strokeWeight: 1,
+            fillColor: '#76FF03',
+            fillOpacity: 0.35,
+            map: map,
+            center: citymap[city].center,
+            radius: Math.sqrt(citymap[city].population) * 5
+          });
+        }
+      }
+    </script>
+<script src="https://developers.google.com/maps/documentation/javascript/examples/markerclusterer/markerclusterer.js">
+    </script>
+    <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDUKnCui1WNXWJTT_QDcmhs31x3v-IeV3w&callback=initMap">
+    </script>
+  </body>
+</html>
