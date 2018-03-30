@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta name="viewport" content="initial-scale=1.0, user-scalable=no">
+    <meta charset="utf-8">
+    <title>Marker Clustering 02</title>
+    <style>
+      /* Always set the map height explicitly to define the size of the div
+       * element that contains the map. */
+      #map {
+        height: 100%;
+      }
+      /* Optional: Makes the sample page fill the window. */
+      html, body {
+        height: 100%;
+        margin: 0;
+        padding: 0;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Lokasi Hotel Wilayah Surakarta</h1>
+    <div id="map"></div>
+    <script>
+
+      function initMap() {
+
+        var map = new google.maps.Map(document.getElementById('map'), {
+          zoom: 13,
+          center: {lat: -7.5433078, lng: 110.7661029}
+        });
+
+        // Create an array of alphabetical characters used to label the markers.
+        var labels = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+
+        // Add some markers to the map.
+        // Note: The code uses the JavaScript Array.prototype.map() method to
+        // create an array of markers based on a given "locations" array.
+        // The map() method here has nothing to do with the Google Maps API.
+        var markers = locations.map(function(location, i) {
+          return new google.maps.Marker({
+            position: location,
+            label: labels[i % labels.length]
+          });
+        });
+
+        // Add a marker clusterer to manage the markers.
+        var markerCluster = new MarkerClusterer(map, markers,
+            {imagePath: 'https://developers.google.com/maps/documentation/javascript/examples/markerclusterer/m'});
+      }
+      var locations = [
+        {lat: -7.5674994, lng: 110.8148562},
+        {lat: -7.5573971, lng: 110.7924331},
+        {lat: -7.5582578, lng: 110.8189644},
+        {lat: -7.5588719, lng: 110.7840361},
+        {lat: -7.5636798, lng: 110.7965225},
+        {lat: -7.584122, lng: 110.8259943},
+        {lat: -7.5699118, lng: 110.8131028},
+        {lat: -7.5628093, lng: 110.7971538},
+        {lat: -7.566895, lng: 110.8247243},
+        {lat: -7.5786206, lng: 110.8068422},
+        {lat: -7.5623168, lng: 110.807671},
+        {lat: -7.5674119, lng: 110.8131209},
+        {lat: -7.5636798, lng: 110.7965225},
+        {lat: -7.5643018, lng: 110.8526952},
+        {lat: -7.5699325, lng: 110.7832899},
+      ]
+    </script>
+    <script src="https://developers.google.com/maps/documentation/javascript/examples/markerclusterer/markerclusterer.js">
+    </script>
+    <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDUKnCui1WNXWJTT_QDcmhs31x3v-IeV3w&callback=initMap"></script>
+  </body>
+</html>
